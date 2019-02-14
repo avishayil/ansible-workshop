@@ -4,7 +4,12 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Exercise 1
 
-	> Run a playbook that prints “Hello World” on localhost.
+> Run a playbook that prints “Hello World” on localhost.
+
+## Solution
+
+- `ansible-playbook playbook.yml -v`
+- -v stands for verbose, so we can see the output of our commands (and debug if necessary).
 
 ## Next Step
 
