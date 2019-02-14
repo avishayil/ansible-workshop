@@ -1,0 +1,36 @@
+---
+# Exercise 5: Run a playbook that installs and configures nginx on remote linux machine.
+
+- hosts: linux
+  gather_facts: no
+  vars:
+    ansible_connection: ssh
+    ansible_port: 22
+    ansible_ssh_private_key_file: MyKeyPair.pem
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  tasks:
+    - name: Ensure epel repository is installed
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+      become: yes
+    - name: Ensure nginx is at the latest version
+      yum:
+        name: nginx
+        state: latest
+      become: yes
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+    - name: Copy the content of the web site
+      copy:
+        src: static-site-src/
+        dest: /usr/share/nginx/html
+      become: yes
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes

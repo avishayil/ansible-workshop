@@ -1,0 +1,15 @@
+---
+# Exercise 4: Run a playbook that downloads and installs Notepad++ on a remote windows machine
+
+- hosts: windows
+  gather_facts: no
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_port: 5986
+  tasks:
+    - name: Print "Hello World" to stdout via cmd
+      win_command: cmd /c echo "Hello World"
+    - name: Print "Hello World" to stdout via powershell
+      win_shell: |
+        echo "Hello World"

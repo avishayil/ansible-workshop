@@ -1,0 +1,22 @@
+---
+# Exercise 4: Run a playbook that downloads and installs Notepad++ on a remote windows machine.
+
+- hosts: windows
+  gather_facts: no
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_port: 5986
+  tasks:
+    - name: Install Notepad++
+      win_chocolatey:
+        name: notepadplusplus
+        state: present
+    - name: Install multiple packages sequentially
+      win_chocolatey:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - git
+        - putty
+        - googlechrome
