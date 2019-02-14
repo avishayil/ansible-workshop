@@ -20,4 +20,4 @@ If you don't have `pip` installed, see [this link](https://pip.pypa.io/en/stable
 
 ## Getting Started
 
-Finished all the initial setup? Head to [exercise 1](exercise-1) to start polishing your skills with Ansible.
+Finished all the initial setup? Head to [Exercise 1](exercise-1) to start polishing your skills with Ansible.
