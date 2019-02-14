@@ -4,6 +4,8 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Exercise 4
 
+	> Run a playbook that downloads and installs multiple software on a remote windows machine.
+
 ## Next Step
 
 Finished with this exercise? go to [Exercise 5](../exercise-5)

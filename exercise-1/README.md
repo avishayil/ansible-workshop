@@ -4,6 +4,8 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Exercise 1
 
+	> Run a playbook that prints “Hello World” on localhost.
+
 ## Next Step
 
 Finished with this exercise? go to [Exercise 2](../exercise-2)

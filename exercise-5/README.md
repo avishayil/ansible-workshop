@@ -4,6 +4,8 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Exercise 5
 
+  > Run a playbook that installs and configures nginx on remote linux machine.
+
 ## Next Step
 
 Finished with this exercise? Good Job! You're Done for now.

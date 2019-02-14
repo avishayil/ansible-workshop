@@ -1,5 +1,5 @@
 ---
-# Exercise 4: Run a playbook that downloads and installs Notepad++ on a remote windows machine.
+# Exercise 4: Run a playbook that downloads and installs multiple software on a remote windows machine.
 
 - hosts: windows
   gather_facts: no
