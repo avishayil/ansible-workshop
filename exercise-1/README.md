@@ -6,4 +6,4 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Next Step
 
-Finished with this exercise? go to [Exercise 2](../exercise-2/README.md)
+Finished with this exercise? go to [Exercise 2](../exercise-2)
