@@ -20,4 +20,7 @@ If you don't have `pip` installed, see [this link](https://pip.pypa.io/en/stable
 
 ## Getting Started
 
+- Clone this repository - `git clone https://github.com/avishayil/ansible-workshop`.
+- Get your KeyPair for logging in to the Linux target host, use ssh-agent to log in to the Ansible Controller and agent forwarding.
+
 Finished all the initial setup? Head to [Exercise 1](exercise-1) to start polishing your skills with Ansible.
