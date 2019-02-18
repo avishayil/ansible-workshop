@@ -1,0 +1,8 @@
+---
+# Exercise 1: Run a playbook that prints “Hello World” on localhost.
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Print "Hello World" to stdout
+      command: echo "Hello World"

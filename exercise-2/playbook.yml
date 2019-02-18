@@ -1,0 +1,12 @@
+---
+# Exercise 2: Run a playbook that prints “Hello World” on a remote Linux host.
+
+- hosts: linux
+  gather_facts: no
+  vars:
+    ansible_connection: ssh
+    ansible_port: 22
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o ForwardAgent=yes"
+  tasks:
+    - name: Print "Hello World" to stdout
+      command: echo "Hello World"
