@@ -1,0 +1,7 @@
+---
+
+ansible_python_interpreter: python
+ansible_winrm_server_cert_validation: ignore
+ansible_connection: winrm
+ansible_winrm_transport: basic
+ansible_port: 5986

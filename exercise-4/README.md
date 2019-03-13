@@ -17,6 +17,10 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 - -e stands for extra vars, where you can specify variables to use inside the playbook. `ansible_user` and `ansible_password` are **unique variables** used to login to Windows machines with username and password.
 - `win_chocolatey` stands for the module that uses [Chocolatey](https://chocolatey.org/) package manager for windows, to manage software on the remote host. You can use it to install and uninstall software, and if it is not exists on the machine - it will install itself automatically.
 
+## Bonus
+
+- Try to replace `present` on the `win_chocolatey` module to `absent` and see what happens!
+
 ## Next Step
 
 Finished with this exercise? go to [Exercise 5](../exercise-5)

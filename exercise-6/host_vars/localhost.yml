@@ -1,0 +1,34 @@
+---
+
+region: # Fill here the AWS region where you want to spawn the EC2 instances
+vpc: # Fill here the VPC id where you want to spawn the EC2 instances
+subnet: # Fill here the subnet id where you want to spawn the EC2 instances
+security_group_rules_incoming:
+  - proto: tcp
+    from_port: 5985
+    to_port: 5986
+    cidr_ip:
+      - 0.0.0.0/0
+  - proto: tcp
+    from_port: 3389
+    to_port: 3389
+    cidr_ip:
+      - 0.0.0.0/0
+security_group_rules_outgoing:
+  - proto: all
+    cidr_ip: 0.0.0.0/0
+keypair: # Fill here existing keypair to spawn the EC2 instances with
+instance: t2.micro
+ami_id: # Fill here the AMI id that would be used to create the EC2 instances from
+ansible_user_data: |
+ <powershell>
+  # Change Password
+  $admin = [adsi]("WinNT://./administrator, user")
+  $admin.PSBase.Invoke("SetPassword", "{{ ansible_password }}")
+
+  # Configure machine for ansible remoting
+  $url = "https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"
+  $file = "$env:temp\ConfigureRemotingForAnsible.ps1"
+  (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+  powershell.exe -ExecutionPolicy ByPass -File $file -EnableCredSSP
+  </powershell>

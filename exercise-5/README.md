@@ -15,4 +15,4 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Next Step
 
-Finished with this exercise? Good Job! You're Done for now.
+Finished with this exercise? go to [Exercise 6](../exercise-6)

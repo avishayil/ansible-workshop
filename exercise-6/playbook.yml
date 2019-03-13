@@ -1,0 +1,58 @@
+---
+# Exercise 6: Run a playbook that provisions 2 Windows EC2 instances, installs Google Chrome and creating a shortcut to Ansible website that uses Google Chrome.
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: Create Security Group
+      ec2_group:
+        name: "My-Security-Group"
+        vpc_id: "{{ vpc }}"
+        description: "Security group for testing purposes"
+        rules: "{{ security_group_rules_incoming }}"
+        rules_egress: "{{ security_group_rules_outgoing }}"
+        state: present
+      register: created_sg
+
+    - name: spin up EC2 instance
+      ec2:
+        instance_type: "{{ instance }}"
+        vpc_subnet_id: "{{ subnet }}"
+        assign_public_ip: yes
+        image: "{{ ami_id }}"
+        key_name: "{{ keypair }}"
+        group_id: "{{ created_sg.group_id }}"
+        count: 2
+        user_data: "{{ ansible_user_data }}"
+        wait: yes
+        instance_tags:
+          Name: My EC2 Instance
+      register: ec2_instances
+
+    - add_host:
+        hostname: "{{ item.public_ip }}"
+        groups: windows
+      with_items: "{{ ec2_instances.instances }}"
+
+- hosts: windows
+  gather_facts: no
+  tasks:
+
+    - name: Wait for the EC2 instances to be available
+      wait_for_connection:
+
+    - name: Install Google Chrome
+      win_chocolatey:
+        name: googlechrome
+        state: present
+        ignore_checksums: yes
+
+    - name: Create an application shortcut for the Ansible website
+      win_shortcut:
+        src: '%ProgramFiles%\Google\Chrome\Application\chrome.exe'
+        dest: '%UserProfile%\Desktop\Ansible website.lnk'
+        args: --new-window https://ansible.com/
+        directory: '%ProgramFiles%\Google\Chrome\Application'
+        icon: '%ProgramFiles%\Google\Chrome\Application\chrome.exe,0'
+        hotkey: Ctrl+Alt+A
