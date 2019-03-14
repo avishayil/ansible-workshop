@@ -1,6 +1,6 @@
 ---
 
-region: # Fill here the AWS region where you want to spawn the EC2 instances
+aws_region: # Fill here the AWS region where you want to spawn the EC2 instances
 vpc: # Fill here the VPC id where you want to spawn the EC2 instances
 subnet: # Fill here the subnet id where you want to spawn the EC2 instances
 security_group_rules_incoming:
