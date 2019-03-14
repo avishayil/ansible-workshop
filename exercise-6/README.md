@@ -8,7 +8,7 @@ Hi! Welcome to the **Ansible Workshop**. In this repository you can find variety
 
 ## Solution
 
-- Install the required Ansible Python dependencies to work with AWS: `pip install boto`
+- Install the required Ansible Python dependencies to work with AWS: `pip install boto boto3 botocore`
 - Install `awscli` on your Ansible controller: `pip install awscli`
 - Make sure that you're logged in to your AWS account via `aws configure`
 - Fill the neccesary fields on `host_vars/localhost`
